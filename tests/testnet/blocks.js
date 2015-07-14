@@ -49,7 +49,7 @@ module.exports.Transactions = function(test, common) {
         } else {
           t.equal(blocks.length, 1, "blocks.length should be 1")
           var txs = blocks[0];
-          t.true(txs.length === 1 || txs.length === 6, "txs.length should be 1 or 6")
+          t.equal(txs.length, 6, "txs.length should be 6")
           var tx = txs[0]
           t.equal(tx.blockId, blockId, "tx.blockId should be blockId")
           t.true(tx.txid === null || tx.txid === txid, "tx.txid should be null or txid")

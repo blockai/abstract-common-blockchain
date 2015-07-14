@@ -12,7 +12,7 @@ module.exports.Get = function(test, common) {
         var vin = tx.vin[0];
         t.equal(vin.txid, output_txid, "tx.vin[0].txid should be txid")
         t.equal(vin.txId, output_txid, "tx.vin[0].txId should be txid")
-        t.true(vin.vout === null || vin.vout === 1, "tx.vin[0].vout should be 1")
+        t.true(vin.vout === null || vin.vout === 1, "tx.vin[0].vout should be 1 or null")
         t.equal(tx.vout.length, 2, "tx.vin.length should be 2")
         var vout = tx.vout
         var op_return_output = vout[0]
@@ -55,7 +55,7 @@ module.exports.Outputs = function(test, common) {
         t.equal(op_return_output.txId, txid, "op_return_output.txId should be txid")
         t.equal(op_return_output.value, 0, "op_return_output.value should be 0")
         t.equal(op_return_output.vout, 0, "op_return_output.vout should be 0")
-        t.true(op_return_output.scriptPubKey === null || op_return_output.scriptPubKey === '6a281f00042d8ccd0e823010845fa5e99968ff96166f3e4aa15b6d4420b089a0f1dd5dd4cbce6666be79', "op_return_output.scriptPubKey should be 6a281f00042d8ccd0e823010845fa5e99968ff96166f3e4aa15b6d4420b089a0f1dd5dd4cbce6666be79")
+        t.true(op_return_output.scriptPubKey === null || op_return_output.scriptPubKey === '6a281f00042d8ccd0e823010845fa5e99968ff96166f3e4aa15b6d4420b089a0f1dd5dd4cbce6666be79', "op_return_output.scriptPubKey should be 6a281f00042d8ccd0e823010845fa5e99968ff96166f3e4aa15b6d4420b089a0f1dd5dd4cbce6666be79 or null")
         var change_output = txos[1]
         t.equal(change_output.txid, txid, "change_output.txid should be txid")
         t.equal(change_output.txId, txid, "change_output.txId should be txid")

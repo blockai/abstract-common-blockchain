@@ -9,8 +9,8 @@ module.exports.Get = function(test, common) {
         t.equal(tx.txId, txid, "tx.txId should be txid")
         t.equal(tx.vin.length, 2, "tx.vin.length should be 2")
         var vin = tx.vin[0]
-        t.true(vin.txid === null || typeof(vin.txid) == "string", "tx.vin[0].txid should be txid")
-        t.true(vin.txId === null || typeof(vin.txId) == "string", "tx.vin[0].txId should be txid")
+        t.true(vin.txid === null || typeof(vin.txid) == "string", "tx.vin[0].txid should be of type string or null")
+        t.true(vin.txId === null || typeof(vin.txId) == "string", "tx.vin[0].txId should be of type string or null")
         t.true(vin.vout === null || typeof(vin.vout) == "number", "tx.vin[0].vout should be null or number")
         t.equal(tx.vout.length, 2, "tx.vout.length should be 2")
         var vout = tx.vout
@@ -18,8 +18,8 @@ module.exports.Get = function(test, common) {
         t.equal(output.value, 6980000, "output.value should be 6980000")
         t.true(output.index === null || output.index === 0, "output.index should be null or 0")
         t.true(output.n === null || output.n === 0, "output.n should be null or 0")
-        t.true(output.scriptPubKey.type === null || output.scriptPubKey.type === 'pubkeyhash', "output.scriptPubKey.type should be pubkeyhash")
-        t.true(output.scriptPubKey.hex === null || output.scriptPubKey.hex === "76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac", "output.scriptPubKey.hex should be 76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac")
+        t.true(output.scriptPubKey.type === null || output.scriptPubKey.type === 'pubkeyhash', "output.scriptPubKey.type should be pubkeyhash or null")
+        t.true(output.scriptPubKey.hex === null || output.scriptPubKey.hex === "76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac", "output.scriptPubKey.hex should be 76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac or null")
         t.end()
       });
     })
@@ -46,7 +46,7 @@ module.exports.Outputs = function(test, common) {
         t.equal(output.txId, txid, "output.txId should be txid")
         t.equal(output.value, 6980000, "output.value should be 6980000")
         t.equal(output.vout, 0, "output.vout should be 0")
-        t.true(output.scriptPubKey === null || output.scriptPubKey === '76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac', "output.scriptPubKey should be 76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac")
+        t.true(output.scriptPubKey === null || output.scriptPubKey === '76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac', "output.scriptPubKey should be 76a914b1f484a2202abcf00517f9c3f2fafe76b7b2cf0588ac or null")
         var change_output = txos[1]
         t.equal(change_output.txid, txid, "change_output.txid should be txid")
         t.equal(change_output.txId, txid, "change_output.txId should be txid")
