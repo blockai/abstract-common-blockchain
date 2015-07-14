@@ -43,14 +43,19 @@ module.exports.Transactions = function(test, common) {
   test('getting all transaction by blocks on testnet', function(t) {
     common.setup(test, function(err, commonBlockchain) {
       commonBlockchain.Blocks.Transactions([blockId], function(err, blocks) {
-        t.equal(blocks.length, 1, "blocks.length should be 1")
-        var txs = blocks[0];
-        t.true(txs.length === 1 || txs.length === 6, "txs.length should be 1 or 6")
-        var tx = txs[0]
-        t.equal(tx.blockId, blockId, "tx.blockId should be blockId")
-        t.true(tx.txid === null || tx.txid === txid, "tx.txid should be null or txid")
-        t.true(tx.txId === null || tx.txId === txid, "tx.txId should be null or txid")
-        t.end()
+        if (err) {
+          console.log(err)
+          t.end()
+        } else {
+          t.equal(blocks.length, 1, "blocks.length should be 1")
+          var txs = blocks[0];
+          t.true(txs.length === 1 || txs.length === 6, "txs.length should be 1 or 6")
+          var tx = txs[0]
+          t.equal(tx.blockId, blockId, "tx.blockId should be blockId")
+          t.true(tx.txid === null || tx.txid === txid, "tx.txid should be null or txid")
+          t.true(tx.txId === null || tx.txId === txid, "tx.txId should be null or txid")
+          t.end()
+        }
       });
     })
   })
